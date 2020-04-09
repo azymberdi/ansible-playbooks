@@ -1,0 +1,946 @@
+Last login: Wed Apr  8 00:27:53 on ttys001
+azymberdigutdanov@Azymberdis-MBP ~ % ssh ec2-user@35.179.15.73
+The authenticity of host '35.179.15.73 (35.179.15.73)' can't be established.
+ECDSA key fingerprint is SHA256:AdmJS5P5HqWytQn7Z8zpi1aJR5Yl7VADl3QSscZ3yKk.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '35.179.15.73' (ECDSA) to the list of known hosts.
+Last login: Tue Apr  7 22:54:59 2020 from 23-116-226-200.lightspeed.livnmi.sbcglobal.net
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+1 package(s) needed for security, out of 7 available
+Run "sudo yum update" to apply all updates.
+[ec2-user@ip-172-31-13-43 ~]$ vi configurations/awx.tfvars
+[ec2-user@ip-172-31-13-43 ~]$ cd infrastructure/awx/aws
+[ec2-user@ip-172-31-13-43 aws]$ vi configurations/awx.tfvars
+[ec2-user@ip-172-31-13-43 aws]$ cd
+[ec2-user@ip-172-31-13-43 ~]$ sudo su -
+Last login: Tue Apr  7 02:28:07 UTC 2020 on pts/0
+[root@ip-172-31-13-43 ~]# yum install ansible
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                               | 2.4 kB     00:00     
+No package ansible available.
+Error: Nothing to do
+
+
+ansible is available in Amazon Linux Extra topic "ansible2"
+
+To use, run
+# sudo amazon-linux-extras install ansible2
+
+Learn more at
+https://aws.amazon.com/amazon-linux-2/faqs/#Amazon_Linux_Extras
+
+
+[root@ip-172-31-13-43 ~]# sudo amazon-linux-extras install ansible2
+Installing ansible
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Cleaning repos: amzn2-core amzn2extra-ansible2 amzn2extra-docker
+12 metadata files removed
+4 sqlite files removed
+0 metadata files removed
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                               | 2.4 kB     00:00     
+amzn2extra-ansible2                                      | 1.8 kB     00:00     
+amzn2extra-docker                                        | 1.8 kB     00:00     
+(1/7): amzn2-core/2/x86_64/group_gz                        | 2.5 kB   00:00     
+(2/7): amzn2-core/2/x86_64/updateinfo                      | 199 kB   00:00     
+(3/7): amzn2extra-docker/2/x86_64/primary_db               |  64 kB   00:00     
+(4/7): amzn2extra-ansible2/2/x86_64/updateinfo             |   69 B   00:00     
+(5/7): amzn2extra-ansible2/2/x86_64/primary_db             |  32 kB   00:00     
+(6/7): amzn2extra-docker/2/x86_64/updateinfo               |   69 B   00:00     
+(7/7): amzn2-core/2/x86_64/primary_db                      |  39 MB   00:00     
+Resolving Dependencies
+--> Running transaction check
+---> Package ansible.noarch 0:2.9.5-1.amzn2 will be installed
+--> Processing Dependency: sshpass for package: ansible-2.9.5-1.amzn2.noarch
+--> Processing Dependency: python-paramiko for package: ansible-2.9.5-1.amzn2.noarch
+--> Processing Dependency: python-keyczar for package: ansible-2.9.5-1.amzn2.noarch
+--> Processing Dependency: python-httplib2 for package: ansible-2.9.5-1.amzn2.noarch
+--> Processing Dependency: python-crypto for package: ansible-2.9.5-1.amzn2.noarch
+--> Running transaction check
+---> Package python-httplib2.noarch 0:0.9.2-0.1.amzn2 will be installed
+---> Package python-keyczar.noarch 0:0.71c-2.amzn2 will be installed
+---> Package python2-crypto.x86_64 0:2.6.1-13.amzn2.0.3 will be installed
+--> Processing Dependency: libtomcrypt.so.1()(64bit) for package: python2-crypto-2.6.1-13.amzn2.0.3.x86_64
+---> Package python2-paramiko.noarch 0:1.16.1-3.amzn2.0.2 will be installed
+--> Processing Dependency: python2-ecdsa for package: python2-paramiko-1.16.1-3.amzn2.0.2.noarch
+---> Package sshpass.x86_64 0:1.06-1.amzn2.0.1 will be installed
+--> Running transaction check
+---> Package libtomcrypt.x86_64 0:1.18.2-1.amzn2.0.1 will be installed
+--> Processing Dependency: libtommath >= 1.0 for package: libtomcrypt-1.18.2-1.amzn2.0.1.x86_64
+--> Processing Dependency: libtommath.so.1()(64bit) for package: libtomcrypt-1.18.2-1.amzn2.0.1.x86_64
+---> Package python2-ecdsa.noarch 0:0.13.3-1.amzn2.0.1 will be installed
+--> Running transaction check
+---> Package libtommath.x86_64 0:1.0.1-4.amzn2.0.1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package            Arch     Version                Repository             Size
+================================================================================
+Installing:
+ ansible            noarch   2.9.5-1.amzn2          amzn2extra-ansible2    17 M
+Installing for dependencies:
+ libtomcrypt        x86_64   1.18.2-1.amzn2.0.1     amzn2extra-ansible2   409 k
+ libtommath         x86_64   1.0.1-4.amzn2.0.1      amzn2extra-ansible2    36 k
+ python-httplib2    noarch   0.9.2-0.1.amzn2        amzn2extra-ansible2   115 k
+ python-keyczar     noarch   0.71c-2.amzn2          amzn2extra-ansible2   218 k
+ python2-crypto     x86_64   2.6.1-13.amzn2.0.3     amzn2extra-ansible2   476 k
+ python2-ecdsa      noarch   0.13.3-1.amzn2.0.1     amzn2extra-ansible2    94 k
+ python2-paramiko   noarch   1.16.1-3.amzn2.0.2     amzn2extra-ansible2   259 k
+ sshpass            x86_64   1.06-1.amzn2.0.1       amzn2extra-ansible2    22 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+8 Dependent packages)
+
+Total download size: 19 M
+Installed size: 110 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/9): libtomcrypt-1.18.2-1.amzn2.0.1.x86_64.rpm           | 409 kB   00:00     
+(2/9): libtommath-1.0.1-4.amzn2.0.1.x86_64.rpm             |  36 kB   00:00     
+(3/9): python-httplib2-0.9.2-0.1.amzn2.noarch.rpm          | 115 kB   00:00     
+(4/9): python-keyczar-0.71c-2.amzn2.noarch.rpm             | 218 kB   00:00     
+(5/9): python2-crypto-2.6.1-13.amzn2.0.3.x86_64.rpm        | 476 kB   00:00     
+(6/9): python2-ecdsa-0.13.3-1.amzn2.0.1.noarch.rpm         |  94 kB   00:00     
+(7/9): python2-paramiko-1.16.1-3.amzn2.0.2.noarch.rpm      | 259 kB   00:00     
+(8/9): sshpass-1.06-1.amzn2.0.1.x86_64.rpm                 |  22 kB   00:00     
+(9/9): ansible-2.9.5-1.amzn2.noarch.rpm                    |  17 MB   00:00     
+--------------------------------------------------------------------------------
+Total                                               51 MB/s |  19 MB  00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : sshpass-1.06-1.amzn2.0.1.x86_64                              1/9 
+  Installing : python-httplib2-0.9.2-0.1.amzn2.noarch                       2/9 
+  Installing : libtommath-1.0.1-4.amzn2.0.1.x86_64                          3/9 
+  Installing : libtomcrypt-1.18.2-1.amzn2.0.1.x86_64                        4/9 
+  Installing : python2-crypto-2.6.1-13.amzn2.0.3.x86_64                     5/9 
+  Installing : python-keyczar-0.71c-2.amzn2.noarch                          6/9 
+  Installing : python2-ecdsa-0.13.3-1.amzn2.0.1.noarch                      7/9 
+  Installing : python2-paramiko-1.16.1-3.amzn2.0.2.noarch                   8/9 
+  Installing : ansible-2.9.5-1.amzn2.noarch                                 9/9 
+  Verifying  : python2-ecdsa-0.13.3-1.amzn2.0.1.noarch                      1/9 
+  Verifying  : ansible-2.9.5-1.amzn2.noarch                                 2/9 
+  Verifying  : python2-crypto-2.6.1-13.amzn2.0.3.x86_64                     3/9 
+  Verifying  : python-keyczar-0.71c-2.amzn2.noarch                          4/9 
+  Verifying  : libtomcrypt-1.18.2-1.amzn2.0.1.x86_64                        5/9 
+  Verifying  : libtommath-1.0.1-4.amzn2.0.1.x86_64                          6/9 
+  Verifying  : python-httplib2-0.9.2-0.1.amzn2.noarch                       7/9 
+  Verifying  : python2-paramiko-1.16.1-3.amzn2.0.2.noarch                   8/9 
+  Verifying  : sshpass-1.06-1.amzn2.0.1.x86_64                              9/9 
+
+Installed:
+  ansible.noarch 0:2.9.5-1.amzn2                                                
+
+Dependency Installed:
+  libtomcrypt.x86_64 0:1.18.2-1.amzn2.0.1                                       
+  libtommath.x86_64 0:1.0.1-4.amzn2.0.1                                         
+  python-httplib2.noarch 0:0.9.2-0.1.amzn2                                      
+  python-keyczar.noarch 0:0.71c-2.amzn2                                         
+  python2-crypto.x86_64 0:2.6.1-13.amzn2.0.3                                    
+  python2-ecdsa.noarch 0:0.13.3-1.amzn2.0.1                                     
+  python2-paramiko.noarch 0:1.16.1-3.amzn2.0.2                                  
+  sshpass.x86_64 0:1.06-1.amzn2.0.1                                             
+
+Complete!
+  0  ansible2=latest          enabled      \
+        [ =2.4.2  =2.4.6  =2.8  =stable ]
+  2  httpd_modules            available    [ =1.0  =stable ]
+  3  memcached1.5             available    \
+        [ =1.5.1  =1.5.16  =1.5.17 ]
+  5  postgresql9.6            available    [ =9.6.6  =9.6.8 ]
+  6  postgresql10             available    [ =10  =stable ]
+  8  redis4.0                 available    \
+        [ =4.0.5  =4.0.10  =stable ]
+  9  R3.4                     available    [ =3.4.3  =stable ]
+ 10  rust1                    available    \
+        [ =1.22.1  =1.26.0  =1.26.1  =1.27.2  =1.31.0  =1.38.0 ]
+ 11  vim                      available    [ =8.0  =stable ]
+ 13  ruby2.4                  available    \
+        [ =2.4.2  =2.4.4  =2.4.7  =stable ]
+ 15  php7.2                   available    \
+        [ =7.2.0  =7.2.4  =7.2.5  =7.2.8  =7.2.11  =7.2.13  =7.2.14
+          =7.2.16  =7.2.17  =7.2.19  =7.2.21  =7.2.22  =7.2.23
+          =7.2.24  =7.2.26  =stable ]
+ 17  lamp-mariadb10.2-php7.2  available    \
+        [ =10.2.10_7.2.0  =10.2.10_7.2.4  =10.2.10_7.2.5
+          =10.2.10_7.2.8  =10.2.10_7.2.11  =10.2.10_7.2.13
+          =10.2.10_7.2.14  =10.2.10_7.2.16  =10.2.10_7.2.17
+          =10.2.10_7.2.19  =10.2.10_7.2.22  =10.2.10_7.2.23
+          =10.2.10_7.2.24  =stable ]
+ 18  libreoffice              available    \
+        [ =5.0.6.2_15  =5.3.6.1  =stable ]
+ 19  gimp                     available    [ =2.8.22 ]
+ 20  docker=latest            enabled      \
+        [ =17.12.1  =18.03.1  =18.06.1  =18.09.9  =stable ]
+ 21  mate-desktop1.x          available    [ =1.19.0  =1.20.0 ]
+ 22  GraphicsMagick1.3        available    \
+        [ =1.3.29  =1.3.32  =1.3.34 ]
+ 23  tomcat8.5                available    \
+        [ =8.5.31  =8.5.32  =8.5.38  =8.5.40  =8.5.42  =8.5.50
+          =stable ]
+ 24  epel                     available    [ =7.11 ]
+ 25  testing                  available    [ =1.0  =stable ]
+ 26  ecs                      available    [ =stable ]
+ 27  corretto8                available    \
+        [ =1.8.0_192  =1.8.0_202  =1.8.0_212  =1.8.0_222  =1.8.0_232
+          =1.8.0_242 ]
+ 28  firecracker              available    [ =0.11  =stable ]
+ 29  golang1.11               available    \
+        [ =1.11.3  =1.11.11  =1.11.13  =stable ]
+ 30  squid4                   available    [ =4  =stable ]
+ 31  php7.3                   available    \
+        [ =7.3.2  =7.3.3  =7.3.4  =7.3.6  =7.3.8  =7.3.9  =7.3.10
+          =7.3.11  =7.3.13  =stable ]
+ 32  lustre2.10               available    \
+        [ =2.10.5  =2.10.8  =stable ]
+ 33  java-openjdk11           available    [ =11  =stable ]
+ 34  lynis                    available    [ =stable ]
+ 35  kernel-ng                available    [ =stable ]
+ 36  BCC                      available    [ =0.x  =stable ]
+ 37  mono                     available    [ =5.x ]
+ 38  nginx1                   available    [ =stable ]
+ 39  ruby2.6                  available    [ =2.6  =stable ]
+ 40  mock                     available    [ =stable ]
+ 41  postgresql11             available    [ =11  =stable ]
+ 42  php7.4                   available    [ =stable ]
+[root@ip-172-31-13-43 ~]# ansible --version
+ansible 2.9.5
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.16 (default, Dec 12 2019, 23:58:22) [GCC 7.3.1 20180712 (Red Hat 7.3.1-6)]
+[root@ip-172-31-13-43 ~]# ansible all -m ping
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+[root@ip-172-31-13-43 ~]# ansible localhost -m ping
+localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+[root@ip-172-31-13-43 ~]# ansible localhost -m raw -a "free -m"
+localhost | CHANGED | rc=0 >>
+              total        used        free      shared  buff/cache   available
+Mem:            983         136         364           0         481         697
+Swap:             0           0           0
+
+[root@ip-172-31-13-43 ~]# iptables - L
+Bad argument `-'
+Try `iptables -h' or 'iptables --help' for more information.
+[root@ip-172-31-13-43 ~]# iptables -L
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+[root@ip-172-31-13-43 ~]# cd
+[root@ip-172-31-13-43 ~]# exit
+logout
+[ec2-user@ip-172-31-13-43 ~]$ cd infrastructure/awx/aws
+[ec2-user@ip-172-31-13-43 aws]$ vi configurations/awx.tfvars
+[ec2-user@ip-172-31-13-43 aws]$ source setenv.sh configurations/awx.tfvars
+-bash
+terraform {
+backend "s3" {
+bucket = "ansible-tower-azymberdi99"
+key = "tower/us-east-1/tools/tools/tower.tfstate"
+region = "us-east-1"
+  }
+}
+Initializing modules...
+- module.awx
+
+Initializing the backend...
+
+Successfully configured the backend "s3"! Terraform will automatically
+use this backend unless the backend configuration changes.
+
+Initializing provider plugins...
+
+The following providers do not have any version constraints in configuration,
+so the latest version was installed.
+
+To prevent automatic upgrades to new major versions that may contain breaking
+changes, it is recommended to add version = "..." constraints to the
+corresponding provider blocks in configuration, with the constraint strings
+suggested below.
+
+* provider.aws: version = "~> 2.56"
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+[ec2-user@ip-172-31-13-43 aws]$ terraform apply -var-file configurations/awx.tfvars
+aws_security_group.allow_ssh_and_awx: Refreshing state... (ID: sg-0e058ee658ea89392)
+aws_key_pair.ansible: Refreshing state... (ID: ansible)
+data.aws_ami.centos-management_region: Refreshing state...
+aws_key_pair.region3: Refreshing state... (ID: ansible)
+aws_security_group.allow_ssh_and_awx_region3: Refreshing state... (ID: sg-0cc40a1ce94e6b8b8)
+data.aws_ami.centos-region3: Refreshing state...
+aws_instance.worker3: Refreshing state... (ID: i-02f15e6b5dba77dbf)
+aws_security_group.allow_ssh_and_awx_region1: Refreshing state... (ID: sg-03d8a01093b306b00)
+aws_key_pair.ansible_region1: Refreshing state... (ID: ansible)
+data.aws_ami.centos-region1: Refreshing state...
+aws_iam_role.tower_admin: Refreshing state... (ID: tower_admin)
+aws_iam_role.admine_admin_worker1: Refreshing state... (ID: admine_admin_worker1)
+aws_security_group.allow_ssh_and_awx_region2: Refreshing state... (ID: sg-0fc2178c70abef319)
+aws_key_pair.region2: Refreshing state... (ID: ansible)
+data.aws_ami.centos-region2: Refreshing state...
+aws_instance.worker1: Refreshing state... (ID: i-0cf3272aa711658e8)
+aws_iam_instance_profile.admine_profile_worker1: Refreshing state... (ID: admine_profile_worker1)
+aws_iam_role_policy.admine_admin_policy_worker1: Refreshing state... (ID: admine_admin_worker1:admine_admin_policy_worker1)
+aws_iam_role_policy.tower_admin_policy: Refreshing state... (ID: tower_admin:tower_admin_policy)
+aws_iam_instance_profile.tower_profile: Refreshing state... (ID: tower_profile)
+aws_instance.awx: Refreshing state... (ID: i-04d6dfdfcf2be2f40)
+aws_instance.worker2: Refreshing state... (ID: i-002d7b32c03e8ed65)
+aws_route53_record.tower: Refreshing state... (ID: Z0087054W7TKM54TM8MW_tower.azymberdi.com_A)
+aws_route53_record.worker1: Refreshing state... (ID: Z0087054W7TKM54TM8MW_worker1.azymberdi.com_A)
+aws_route53_record.worker2: Refreshing state... (ID: Z0087054W7TKM54TM8MW_worker2.azymberdi.com_A)
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  ~ module.awx.aws_instance.worker3
+      tags.%:             "1" => "0"
+      tags.Name:          "Default" => ""
+
+  ~ module.awx.aws_route53_record.tower
+      records.3182472740: "18.132.37.215" => ""
+      records.3704939878: "" => "3.10.170.250"
+
+  ~ module.awx.aws_route53_record.worker1
+      records.3410863862: "" => "3.80.242.235"
+      records.763231590:  "18.234.73.185" => ""
+
+
+Plan: 0 to add, 3 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+module.awx.aws_instance.worker3: Modifying... (ID: i-02f15e6b5dba77dbf)
+  tags.%:    "1" => "0"
+  tags.Name: "Default" => ""
+module.awx.aws_route53_record.worker1: Modifying... (ID: Z0087054W7TKM54TM8MW_worker1.azymberdi.com_A)
+  records.3410863862: "" => "3.80.242.235"
+  records.763231590:  "18.234.73.185" => ""
+module.awx.aws_route53_record.tower: Modifying... (ID: Z0087054W7TKM54TM8MW_tower.azymberdi.com_A)
+  records.3182472740: "18.132.37.215" => ""
+  records.3704939878: "" => "3.10.170.250"
+module.awx.aws_instance.worker3: Modifications complete after 1s (ID: i-02f15e6b5dba77dbf)
+module.awx.aws_route53_record.tower: Still modifying... (ID: Z0087054W7TKM54TM8MW_tower.azymberdi.com_A, 11s elapsed)
+module.awx.aws_route53_record.worker1: Still modifying... (ID: Z0087054W7TKM54TM8MW_worker1.azymberdi.com_A, 11s elapsed)
+module.awx.aws_route53_record.worker1: Still modifying... (ID: Z0087054W7TKM54TM8MW_worker1.azymberdi.com_A, 21s elapsed)
+module.awx.aws_route53_record.tower: Still modifying... (ID: Z0087054W7TKM54TM8MW_tower.azymberdi.com_A, 21s elapsed)
+module.awx.aws_route53_record.tower: Still modifying... (ID: Z0087054W7TKM54TM8MW_tower.azymberdi.com_A, 31s elapsed)
+module.awx.aws_route53_record.worker1: Still modifying... (ID: Z0087054W7TKM54TM8MW_worker1.azymberdi.com_A, 31s elapsed)
+module.awx.aws_route53_record.worker1: Modifications complete after 39s (ID: Z0087054W7TKM54TM8MW_worker1.azymberdi.com_A)
+module.awx.aws_route53_record.tower: Modifications complete after 39s (ID: Z0087054W7TKM54TM8MW_tower.azymberdi.com_A)
+
+Apply complete! Resources: 0 added, 3 changed, 0 destroyed.
+
+Outputs:
+
+To_Do = Please reset username and password
+awx_tower =  http://tower.azymberdi.com
+password = username: admin
+username = password: password
+[ec2-user@ip-172-31-13-43 aws]$ ansible-doc shell
+> SHELL    (/usr/lib/python2.7/site-packages/ansible/modules/commands/shell.py)
+
+        The `shell' module takes the command name followed by a list
+        of space-delimited arguments. Either a free form command or
+        `cmd' parameter is required, see the examples. It is almost
+        exactly like the [command] module but runs the command through
+        a shell (`/bin/sh') on the remote node. For Windows targets,
+        use the [win_shell] module instead.
+
+  * This module is maintained by The Ansible Core Team
+  * note: This module has a corresponding action plugin.
+
+OPTIONS (= is mandatory):
+
+- chdir
+        Change into this directory before running the command.
+        [Default: (null)]
+        type: path
+        version_added: 0.6
+
+- cmd
+        The command to run followed by optional arguments.
+        [Default: (null)]
+        type: str
+[ec2-user@ip-172-31-13-43 ~]$ sudo ansible localhost - m group -a "name=managers"
+usage: ansible [-h] [--version] [-v] [-b] [--become-method BECOME_METHOD]
+               [--become-user BECOME_USER] [-K] [-i INVENTORY] [--list-hosts]
+               [-l SUBSET] [-P POLL_INTERVAL] [-B SECONDS] [-o] [-t TREE] [-k]
+               [--private-key PRIVATE_KEY_FILE] [-u REMOTE_USER]
+               [-c CONNECTION] [-T TIMEOUT]
+               [--ssh-common-args SSH_COMMON_ARGS]
+               [--sftp-extra-args SFTP_EXTRA_ARGS]
+               [--scp-extra-args SCP_EXTRA_ARGS]
+               [--ssh-extra-args SSH_EXTRA_ARGS] [-C] [--syntax-check] [-D]
+               [-e EXTRA_VARS] [--vault-id VAULT_IDS]
+               [--ask-vault-pass | --vault-password-file VAULT_PASSWORD_FILES]
+               [-f FORKS] [-M MODULE_PATH] [--playbook-dir BASEDIR]
+               [-a MODULE_ARGS] [-m MODULE_NAME]
+               pattern
+ansible: error: unrecognized arguments: - m group
+[ec2-user@ip-172-31-13-43 ~]$ sudo ansible localhost -m group -a "name=managers"
+localhost | CHANGED => {
+    "changed": true, 
+    "gid": 1001, 
+    "name": "managers", 
+    "state": "present", 
+    "system": false
+}
+[ec2-user@ip-172-31-13-43 ~]$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+libstoragemgmt:x:999:997:daemon account for libstoragemgmt:/var/run/lsm:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+nfsnobody:x:65534:65534:Anonymous NFS User:/var/lib/nfs:/sbin/nologin
+ec2-instance-connect:x:998:996::/home/ec2-instance-connect:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+chrony:x:997:995::/var/lib/chrony:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
+[ec2-user@ip-172-31-13-43 ~]$ cat /etc/group
+root:x:0:
+bin:x:1:
+daemon:x:2:
+sys:x:3:
+adm:x:4:ec2-user
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mem:x:8:
+kmem:x:9:
+wheel:x:10:ec2-user
+cdrom:x:11:
+mail:x:12:postfix
+man:x:15:
+dialout:x:18:
+floppy:x:19:
+games:x:20:
+tape:x:33:
+video:x:39:
+ftp:x:50:
+lock:x:54:
+audio:x:63:
+nobody:x:99:
+users:x:100:
+utmp:x:22:
+utempter:x:35:
+input:x:999:
+systemd-journal:x:190:ec2-user
+systemd-network:x:192:
+dbus:x:81:
+ssh_keys:x:998:
+rpc:x:32:
+libstoragemgmt:x:997:
+sshd:x:74:
+rpcuser:x:29:
+nfsnobody:x:65534:
+ec2-instance-connect:x:996:
+slocate:x:21:
+postdrop:x:90:
+postfix:x:89:
+chrony:x:995:
+screen:x:84:
+stapusr:x:156:
+stapsys:x:157:
+stapdev:x:158:
+[ec2-user@ip-172-31-13-43 ~]$ sudo ansible localhost -m user -a "name=daud, state=present"
+localhost | FAILED! => {
+    "changed": false, 
+    "msg": "useradd: invalid user name 'daud,'\n", 
+    "name": "daud,", 
+    "rc": 3
+}
+[ec2-user@ip-172-31-13-43 ~]$ sudo ansible localhost -m user -a "name=daud state=present"
+localhost | CHANGED => {
+    "changed": true, 
+    "comment": "", 
+    "create_home": true, 
+    "group": 1002, 
+    "home": "/home/daud", 
+[ec2-user@ip-172-31-13-43 ~]$ sudo ansible localhost -m package -a "name=php7.2 state=removed"
+localhost | SUCCESS => {
+    "changed": false, 
+    "msg": "", 
+    "rc": 0, 
+    "results": [
+        "php7.2 is not installed"
+    ]
+}
+[ec2-user@ip-172-31-13-43 ~]$ sudo ansible localhost -m package -a "name=fail2bna state=installed"
+localhost | FAILED! => {
+    "changed": false, 
+    "msg": "No package matching 'fail2bna' found available, installed or updated", 
+    "rc": 126, 
+    "results": [
+        "No package matching 'fail2bna' found available, installed or updated"
+    ]
+}
+[ec2-user@ip-172-31-13-43 ~]$ sudo ansible localhost -m package -a "name=fail2ban state=installed"
+localhost | FAILED! => {
+    "changed": false, 
+    "msg": "No package matching 'fail2ban' found available, installed or updated", 
+    "rc": 126, 
+    "results": [
+        "No package matching 'fail2ban' found available, installed or updated"
+    ]
+}
+[ec2-user@ip-172-31-13-43 ~]$ cat ~/.ssh/id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDRlp9ZsI9JXAaY/ElZQVFd0TCAsu9xWwR2uANjlwAMUyk1fy3iih1lePmb9w24npM0CYJI1QDUifx7H/nH4fvDoNlrtll2dxH9pzNyYk0sMz3pp2Waw0WWhHYhoULuB2vqcim1LNIYG54MFyi+a1uZNQvvG+DT0JI7pa2LPmM31ru42jrrTadMJMZ6RX6uD8wfmNKhHdB4paO/gyo7acut9q6zZnU0TomnWh2KDrN0MGBqiAR+56yfiH7gaMz1L6n+Bw6iTdPzIEZKI2tnQmUmXpCj9BwkrWGzSGD6a6b0UlFaZYWpXcvwsuE5jGscPMUZ8/xeQWfDfxQ3WNrPL6d ec2-user@Bastion
+[ec2-user@ip-172-31-13-43 ~]$ git clone git@github.com:azymberdi/ansible-playbooks.git
+Cloning into 'ansible-playbooks'...
+The authenticity of host 'github.com (140.82.118.3)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+RSA key fingerprint is MD5:16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,140.82.118.3' (RSA) to the list of known hosts.
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+[ec2-user@ip-172-31-13-43 ~]$ ls
+ansible-playbooks  infrastructure
+[ec2-user@ip-172-31-13-43 ~]$ cd ansible-playbooks/
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ ls
+README.md
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ cat README.md 
+# ansible-playbooks[ec2-user@ip-172-31-13-43 ansible-playbooks]$ asdas
+-bash: asdas: command not found
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ touch file1 file2 file 3
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ ls
+3  file  file1  file2  README.md
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ rm 3
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ rm file
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ ls
+file1  file2  README.md
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ touch file3
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git add *
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git commit -m "added some files"
+[master a45c78e] added some files
+ Committer: EC2 Default User <ec2-user@ip-172-31-13-43.eu-west-2.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file1
+ create mode 100644 file2
+ create mode 100644 file3
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git push
+Warning: Permanently added the RSA host key for IP address '140.82.118.4' to the list of known hosts.
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 312 bytes | 312.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To github.com:azymberdi/ansible-playbooks.git
+   54b8b74..a45c78e  master -> master
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ cat history
+cat: history: No such file or directory
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ mkdir playbooks
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ mkdir roles
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ hostory
+-bash: hostory: command not found
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ history
+    1  hostname bastion
+    2  sudo su
+    3  sudo su -
+    4  ssh-keygen
+    5  git clone https://github.com/farrukh90/infrastructure.git
+    6  ls
+    7  aws s3 mb s3://ansible-tower-azymberdi99  --region us-east-1
+    8  cd
+    9  ls
+   10  source setenv.sh configurationssource setenv.sh configurations/awx.tfvar
+   11  source setenv.sh configurations/awx.tfvar
+   12  ls
+   13  source setenv.sh configurations/awx.tfvars 
+   14  cd infrastructure/
+   15  cd awx
+   16  cd aws
+   17  source setenv.sh configurations/awx.tfvar
+   18  terraform init
+   19  source setenv.sh configurations/awx.tfvar
+   20  cd
+   21  was
+   22  aws
+   23  terraform apply -var-file configurations/awx.tfvars
+   24  source setenv.sh configurations/awx.tfvar
+   25  terraform init
+   26  history
+   27  ls
+   28  cd infrastructure/awx/aws/
+   29  source setenv.sh configurations/awx.tfvar
+   30  terraform apply -var-file configurations/awx.tfvars
+   31  source setenv.sh configurations/awx.tfvar
+   32  sudo su -
+   33  cd infrastructure/awx/aws/
+   34  ls
+   35  source setenv.sh configurations/awx.tfvars
+   36  terraform destroy -var-file configurations/awx.tfvars
+   37  logout
+   38  ls
+   39  mv insfrastructure/ /tmp/
+   40  mv infrastructure/ /tmp/
+   41  ls
+   42  git clone https://github.com/farrukh90/infrastructure
+   43  ls
+   44  cd infrastructure/awx/aws/
+   45  ls
+   46  vi configurations/aw
+   47  vi configurations/awx.tfvars
+   48  source setenv.sh configurations/awx.tfvars
+   49  terraform apply -var-file configurations/awx.tfvars
+   50  vi configurations/awx.tfvars
+   51  aws s3 mb s3://ansible-tower-azymberdi99 --region us-east-1
+   52  vi configurations/awx.tfvars
+   53  source setenv.sh configurations/awx.tfvars
+   54  terraform apply -var-file configurations/awx.tfvars
+   55  vi configurations/awx.tfvars
+   56  exit
+   57  vi configurations/awx.tfvars
+   58  source setenv.sh configurations/awx.tfvars
+   59  ls
+   60  mv infrastructure/ /tmp/
+   61  ls
+   62  mv infrastructure/ /tmp/infrs
+   63  ls
+   64  git clone https://github.com/farrukh90/infrastructure
+   65  cd infrastructure/awx/aws/
+   66  vi configurations/awx.tfvars
+   67  source setenv.sh configurations/awx.tfvars
+   68  terraform apply -var-file configurations/awx.tfvars
+   69  terraform destroy -var-file configurations/awx.tfvars
+   70  vi configurations/awx.tfvars
+   71  source setenv.sh configurations/awx.tfvars
+   72  terraform apply -var-file configurations/awx.tfvars
+   73  ping tower.tmdevops.com.
+   74  source setenv.sh configurations/awx.tfvars
+   75  terraform destroy -var-file configurations/awx.tfvars
+   76  exit
+   77  cd
+   78  cd infrastructure/awx/aws
+   79  ls
+   80  cd
+   81  ls
+   82  mv infrastructure/ /tmp/inffo
+   83  ls
+   84  git clone https://github.com/farrukh90/infrastructure
+   85  ls
+   86  cd infrastructure/awx/aws
+   87  vi configurations/awx.tfvars
+   88  source setenv.sh configurations/awx.tfvars
+   89  terraform apply -var-file configurations/awx.tfvars
+   90  vi configurations/awx.tfvars
+   91  cd infrastructure/awx/aws
+   92  vi configurations/awx.tfvars
+   93  cd
+   94  sudo su -
+   95  cd infrastructure/awx/aws
+   96  vi configurations/awx.tfvars
+   97  source setenv.sh configurations/awx.tfvars
+   98  terraform apply -var-file configurations/awx.tfvars
+   99  ansible-doc shell
+  100  cd
+  101  sudo ansible localhost - m group -a "name=managers"
+  102  sudo ansible localhost -m group -a "name=managers"
+  103  cat /etc/passwd
+  104  cat /etc/group
+  105  sudo ansible localhost -m user -a "name=daud, state=present"
+  106  sudo ansible localhost -m user -a "name=daud state=present"
+  107  sudo ansible list_of_hosts -m package -a "name=php7.2 state=removed"
+  108  sudo ansible localhost -m package -a "name=php7.2 state=removed"
+  109  sudo ansible localhost -m package -a "name=fail2bna state=installed"
+  110  sudo ansible localhost -m package -a "name=fail2ban state=installed"
+  111  cat ~/.ssh/id_rsa.pub 
+  112  git clone git@github.com:azymberdi/ansible-playbooks.git
+  113  ls
+  114  cd ansible-playbooks/
+  115  ls
+  116  cat README.md 
+  117  asdas
+  118  touch file1 file2 file 3
+  119  ls
+  120  rm 3
+  121  rm file
+  122  ls
+  123  touch file3
+  124  git add *
+  125  git commit -m "added some files"
+  126  git push
+  127  cat history
+  128  mkdir playbooks
+  129  mkdir roles
+  130  hostory
+  131  history
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ touch playbooks/playbook1
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ touch roles/role1
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ get status
+-bash: get: command not found
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	playbooks/
+	roles/
+
+nothing added to commit but untracked files present (use "git add" to track)
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git add *
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   playbooks/playbook1
+	new file:   roles/role1
+
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git commit -m "created playbooks and roles folder"
+[master e4c8720] created playbooks and roles folder
+ Committer: EC2 Default User <ec2-user@ip-172-31-13-43.eu-west-2.compute.internal>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 playbooks/playbook1
+ create mode 100644 roles/role1
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 424 bytes | 424.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:azymberdi/ansible-playbooks.git
+   a45c78e..e4c8720  master -> master
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ history > ~/file1
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ cat ~/file1
+    1  hostname bastion
+    2  sudo su
+    3  sudo su -
+    4  ssh-keygen
+    5  git clone https://github.com/farrukh90/infrastructure.git
+    6  ls
+    7  aws s3 mb s3://ansible-tower-azymberdi99  --region us-east-1
+    8  cd
+    9  ls
+   10  source setenv.sh configurationssource setenv.sh configurations/awx.tfvar
+   11  source setenv.sh configurations/awx.tfvar
+   12  ls
+   13  source setenv.sh configurations/awx.tfvars 
+   14  cd infrastructure/
+   15  cd awx
+   16  cd aws
+   17  source setenv.sh configurations/awx.tfvar
+   18  terraform init
+   19  source setenv.sh configurations/awx.tfvar
+   20  cd
+   21  was
+   22  aws
+   23  terraform apply -var-file configurations/awx.tfvars
+   24  source setenv.sh configurations/awx.tfvar
+   25  terraform init
+   26  history
+   27  ls
+   28  cd infrastructure/awx/aws/
+   29  source setenv.sh configurations/awx.tfvar
+   30  terraform apply -var-file configurations/awx.tfvars
+   31  source setenv.sh configurations/awx.tfvar
+   32  sudo su -
+   33  cd infrastructure/awx/aws/
+   34  ls
+   35  source setenv.sh configurations/awx.tfvars
+   36  terraform destroy -var-file configurations/awx.tfvars
+   37  logout
+   38  ls
+   39  mv insfrastructure/ /tmp/
+   40  mv infrastructure/ /tmp/
+   41  ls
+   42  git clone https://github.com/farrukh90/infrastructure
+   43  ls
+   44  cd infrastructure/awx/aws/
+   45  ls
+   46  vi configurations/aw
+   47  vi configurations/awx.tfvars
+   48  source setenv.sh configurations/awx.tfvars
+   49  terraform apply -var-file configurations/awx.tfvars
+   50  vi configurations/awx.tfvars
+   51  aws s3 mb s3://ansible-tower-azymberdi99 --region us-east-1
+   52  vi configurations/awx.tfvars
+   53  source setenv.sh configurations/awx.tfvars
+   54  terraform apply -var-file configurations/awx.tfvars
+   55  vi configurations/awx.tfvars
+   56  exit
+   57  vi configurations/awx.tfvars
+   58  source setenv.sh configurations/awx.tfvars
+   59  ls
+   60  mv infrastructure/ /tmp/
+   61  ls
+   62  mv infrastructure/ /tmp/infrs
+   63  ls
+   64  git clone https://github.com/farrukh90/infrastructure
+   65  cd infrastructure/awx/aws/
+   66  vi configurations/awx.tfvars
+   67  source setenv.sh configurations/awx.tfvars
+   68  terraform apply -var-file configurations/awx.tfvars
+   69  terraform destroy -var-file configurations/awx.tfvars
+   70  vi configurations/awx.tfvars
+   71  source setenv.sh configurations/awx.tfvars
+   72  terraform apply -var-file configurations/awx.tfvars
+   73  ping tower.tmdevops.com.
+   74  source setenv.sh configurations/awx.tfvars
+   75  terraform destroy -var-file configurations/awx.tfvars
+   76  exit
+   77  cd
+   78  cd infrastructure/awx/aws
+   79  ls
+   80  cd
+   81  ls
+   82  mv infrastructure/ /tmp/inffo
+   83  ls
+   84  git clone https://github.com/farrukh90/infrastructure
+   85  ls
+   86  cd infrastructure/awx/aws
+   87  vi configurations/awx.tfvars
+   88  source setenv.sh configurations/awx.tfvars
+   89  terraform apply -var-file configurations/awx.tfvars
+   90  vi configurations/awx.tfvars
+   91  cd infrastructure/awx/aws
+   92  vi configurations/awx.tfvars
+   93  cd
+   94  sudo su -
+   95  cd infrastructure/awx/aws
+   96  vi configurations/awx.tfvars
+   97  source setenv.sh configurations/awx.tfvars
+   98  terraform apply -var-file configurations/awx.tfvars
+   99  ansible-doc shell
+  100  cd
+  101  sudo ansible localhost - m group -a "name=managers"
+  102  sudo ansible localhost -m group -a "name=managers"
+  103  cat /etc/passwd
+  104  cat /etc/group
+  105  sudo ansible localhost -m user -a "name=daud, state=present"
+  106  sudo ansible localhost -m user -a "name=daud state=present"
+  107  sudo ansible list_of_hosts -m package -a "name=php7.2 state=removed"
+  108  sudo ansible localhost -m package -a "name=php7.2 state=removed"
+  109  sudo ansible localhost -m package -a "name=fail2bna state=installed"
+  110  sudo ansible localhost -m package -a "name=fail2ban state=installed"
+  111  cat ~/.ssh/id_rsa.pub 
+  112  git clone git@github.com:azymberdi/ansible-playbooks.git
+  113  ls
+  114  cd ansible-playbooks/
+  115  ls
+  116  cat README.md 
+  117  asdas
+  118  touch file1 file2 file 3
+  119  ls
+  120  rm 3
+  121  rm file
+  122  ls
+  123  touch file3
+  124  git add *
+  125  git commit -m "added some files"
+  126  git push
+  127  cat history
+  128  mkdir playbooks
+  129  mkdir roles
+  130  hostory
+  131  history
+  132  touch playbooks/playbook1
+  133  touch roles/role1
+  134  get status
+  135  git status
+  136  git add *
+  137  git status
+  138  git commit -m "created playbooks and roles folder"
+  139  git push
+  140  history > ~/file1
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git add *
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git commit -m "created playbooks and roles folder"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ git pull
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:azymberdi/ansible-playbooks
+   e4c8720..4193de0  master     -> origin/master
+Updating e4c8720..4193de0
+Fast-forward
+ team member 2 | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 team member 2
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ ls
+file1  file2  file3  playbooks  README.md  roles  team member 2
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ cat team\ member\ 2 
+This is a test
+[ec2-user@ip-172-31-13-43 ansible-playbooks]$ 
