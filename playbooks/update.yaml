@@ -1,11 +1,12 @@
 ---
-- name: Kernel update
+- name: Updates Kernel
   hosts: all
   become: true
   become_method: sudo
-  tasks: 
+  user: centos
+  tasks:
   - name: Install package on all
-    packages:
+    package: 
       name: kernel
       state: latest
 
@@ -22,20 +23,20 @@
   #     delay: 10
   #   connection: local
 
+  # - name: Update kernel
+  #   when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
+  #   dnf: 
+  #     name: kernel
+  #     state: latest
 
-
-#  - name: Update kernel
-#     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
-#     dnf: 
-#       name: kernel
-#       state: latest
-#   - name: Update kernel
-#     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
-#     yum: 
-#       name: kernel
-#       state: latest
-#   - name: Update kernel
-#     when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "8")
-#     apt: 
-#       name: kernel
-#       state: latest
+  # - name: Update kernel
+  #   when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
+  #   yum: 
+  #     name: kernel
+  #     state: latest
+  
+  # - name: Update kernel
+  #   when: (ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "8")
+  #   apt: 
+  #     name: kernel
+  #     state: latest
