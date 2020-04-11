@@ -12,7 +12,7 @@
       state: started
     ignore_errors: true
 
-  - name: Start r1soft on CentOS 6
+  - name: Start r1soft on CentOS 6  
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version =="6")
     service:
       name: cdp-agent
