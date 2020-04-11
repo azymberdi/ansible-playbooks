@@ -1,0 +1,209 @@
+    1  hostname bastion
+    2  sudo su
+    3  sudo su -
+    4  ssh-keygen
+    5  git clone https://github.com/farrukh90/infrastructure.git
+    6  ls
+    7  aws s3 mb s3://ansible-tower-azymberdi99  --region us-east-1
+    8  cd
+    9  ls
+   10  source setenv.sh configurationssource setenv.sh configurations/awx.tfvar
+   11  source setenv.sh configurations/awx.tfvar
+   12  ls
+   13  source setenv.sh configurations/awx.tfvars 
+   14  cd infrastructure/
+   15  cd awx
+   16  cd aws
+   17  source setenv.sh configurations/awx.tfvar
+   18  terraform init
+   19  source setenv.sh configurations/awx.tfvar
+   20  cd
+   21  was
+   22  aws
+   23  terraform apply -var-file configurations/awx.tfvars
+   24  source setenv.sh configurations/awx.tfvar
+   25  terraform init
+   26  history
+   27  ls
+   28  cd infrastructure/awx/aws/
+   29  source setenv.sh configurations/awx.tfvar
+   30  terraform apply -var-file configurations/awx.tfvars
+   31  source setenv.sh configurations/awx.tfvar
+   32  sudo su -
+   33  cd infrastructure/awx/aws/
+   34  ls
+   35  source setenv.sh configurations/awx.tfvars
+   36  terraform destroy -var-file configurations/awx.tfvars
+   37  logout
+   38  ls
+   39  mv insfrastructure/ /tmp/
+   40  mv infrastructure/ /tmp/
+   41  ls
+   42  git clone https://github.com/farrukh90/infrastructure
+   43  ls
+   44  cd infrastructure/awx/aws/
+   45  ls
+   46  vi configurations/aw
+   47  vi configurations/awx.tfvars
+   48  source setenv.sh configurations/awx.tfvars
+   49  terraform apply -var-file configurations/awx.tfvars
+   50  vi configurations/awx.tfvars
+   51  aws s3 mb s3://ansible-tower-azymberdi99 --region us-east-1
+   52  vi configurations/awx.tfvars
+   53  source setenv.sh configurations/awx.tfvars
+   54  terraform apply -var-file configurations/awx.tfvars
+   55  vi configurations/awx.tfvars
+   56  exit
+   57  vi configurations/awx.tfvars
+   58  source setenv.sh configurations/awx.tfvars
+   59  ls
+   60  mv infrastructure/ /tmp/
+   61  ls
+   62  mv infrastructure/ /tmp/infrs
+   63  ls
+   64  git clone https://github.com/farrukh90/infrastructure
+   65  cd infrastructure/awx/aws/
+   66  vi configurations/awx.tfvars
+   67  source setenv.sh configurations/awx.tfvars
+   68  terraform apply -var-file configurations/awx.tfvars
+   69  terraform destroy -var-file configurations/awx.tfvars
+   70  vi configurations/awx.tfvars
+   71  source setenv.sh configurations/awx.tfvars
+   72  terraform apply -var-file configurations/awx.tfvars
+   73  ping tower.tmdevops.com.
+   74  source setenv.sh configurations/awx.tfvars
+   75  terraform destroy -var-file configurations/awx.tfvars
+   76  exit
+   77  cd
+   78  cd infrastructure/awx/aws
+   79  ls
+   80  cd
+   81  ls
+   82  mv infrastructure/ /tmp/inffo
+   83  ls
+   84  git clone https://github.com/farrukh90/infrastructure
+   85  ls
+   86  cd infrastructure/awx/aws
+   87  vi configurations/awx.tfvars
+   88  source setenv.sh configurations/awx.tfvars
+   89  terraform apply -var-file configurations/awx.tfvars
+   90  vi configurations/awx.tfvars
+   91  cd infrastructure/awx/aws
+   92  vi configurations/awx.tfvars
+   93  cd
+   94  sudo su -
+   95  cd infrastructure/awx/aws
+   96  vi configurations/awx.tfvars
+   97  source setenv.sh configurations/awx.tfvars
+   98  terraform apply -var-file configurations/awx.tfvars
+   99  ansible-doc shell
+  100  cd
+  101  sudo ansible localhost - m group -a "name=managers"
+  102  sudo ansible localhost -m group -a "name=managers"
+  103  cat /etc/passwd
+  104  cat /etc/group
+  105  sudo ansible localhost -m user -a "name=daud, state=present"
+  106  sudo ansible localhost -m user -a "name=daud state=present"
+  107  sudo ansible list_of_hosts -m package -a "name=php7.2 state=removed"
+  108  sudo ansible localhost -m package -a "name=php7.2 state=removed"
+  109  sudo ansible localhost -m package -a "name=fail2bna state=installed"
+  110  sudo ansible localhost -m package -a "name=fail2ban state=installed"
+  111  cat ~/.ssh/id_rsa.pub 
+  112  git clone git@github.com:azymberdi/ansible-playbooks.git
+  113  ls
+  114  cd ansible-playbooks/
+  115  ls
+  116  cat README.md 
+  117  asdas
+  118  touch file1 file2 file 3
+  119  ls
+  120  rm 3
+  121  rm file
+  122  ls
+  123  touch file3
+  124  git add *
+  125  git commit -m "added some files"
+  126  git push
+  127  cat history
+  128  mkdir playbooks
+  129  mkdir roles
+  130  hostory
+  131  history
+  132  touch playbooks/playbook1
+  133  touch roles/role1
+  134  get status
+  135  git status
+  136  git add *
+  137  git status
+  138  git commit -m "created playbooks and roles folder"
+  139  git push
+  140  history > ~/file1
+  141  cat ~/file1
+  142  git add *
+  143  git commit -m "created playbooks and roles folder"
+  144  git pull
+  145  ls
+  146  cat team\ member\ 2 
+  147  logout
+  148  ansible 35.179.15.73 -m ping
+  149  sudo vi /etc/ansible/hosts
+  150  cd /tmp
+  151  git clone https://github.com/ansible/ansible.git
+  152  ls ansible/
+  153  ls ansible
+  154  ls
+  155  git clone https://github.com/farrukh90/configuration-management-with-ansible.git
+  156  ls
+  157  cd
+  158  cd ansible-playbooks/
+  159  cd dynamic
+  160  ls
+  161  sudo vi /etc/ansible/hots
+  162  sudo vi /etc/ansible/hosts
+  163  ansible all -m ping -u centos
+  164  sudo vi /etc/ansible/hosts
+  165  ansible all -m ping -u centos
+  166  ansible all -m ping -u centos -m command -a "sudo yum install telnet -y"
+  167  ansible all -u centos -m command -a "sudo yum install telnet -y"
+  168  cat ~/.ssh/id_rsa
+  169  ls
+  170  cd dynamic
+  171  amazon-linux-extras install ansible2
+  172  sudo amazon-linux-extras install ansible2
+  173  ansible --version
+  174    ansible all -m ping
+  175  ansible all -m ping
+  176  cat /etc/ansible/hosts
+  177  exit
+  178  vi /etc/ansible/hosts
+  179  sudo vi /etc/ansible/hosts
+  180  ansible all -m ping
+  181  sudo vi /etc/ansible/hosts
+  182  ansible all -m ping
+  183  ansible localhost -m ping
+  184  cat home/user/.ssh/known_hosts
+  185  cat /etc/passwd
+  186  cat home/ec2-user/.ssh/known_hosts
+  187  cat /home/ec2-user/.ssh/known_hosts
+  188  cat ~/.ssh/id_rsa
+  189  vi /home/ec2-user/.ssh/known_hosts
+  190  cat ~/.ssh/id_rsa.pub
+  191  vi /home/ec2-user/.ssh/known_hosts
+  192  ansible all -m ping
+  193  vi /home/ec2-user/.ssh/known_hosts
+  194  sudo vi /etc/ansible/hosts
+  195  cat  ~/.ssh/config
+  196  ansible localhost -m raw -a "free -m"
+  197  ansible localhost -m shell -a "free -m"
+  198  ansible-doc raw
+  199  ansible-doc -l |wc -l
+  200  ansibl localhost -m group -a "name=managers"
+  201  ansible localhost -m group -a "name=managers" -k
+  202  sudo ansible localhost -m group -a "name=managers"
+  203  cat /etc/group
+  204  sudo ansible localhost -m group -a "name=managers"
+  205  ls
+  206  rm file1
+  207  ls
+  208  cd ansible-playbooks/
+  209  history > history.txt
