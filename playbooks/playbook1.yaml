@@ -19,7 +19,3 @@
       name: httpd
       state: present
 
-  - name: Add Tom
-    package: 
-      name: tom
-      state: present
