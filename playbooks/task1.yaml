@@ -30,4 +30,9 @@
       name: httpd
       state: started
     ignore_errors: true
+
+  - name: Add User 
+    mysql_user: 
+      name: bob
+      state: present
   

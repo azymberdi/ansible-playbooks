@@ -13,7 +13,3 @@
       name: PyMySQL 
       state: installed  
       
-  - name: Add User 
-    mysql_user: 
-      name: bob
-      state: present
