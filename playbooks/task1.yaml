@@ -34,7 +34,7 @@
   - name: Create a user
     user:
       name: bob
-
+      generate_ssh_key: yes
      
     
   
