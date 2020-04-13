@@ -7,7 +7,7 @@
   tasks: 
   - name: Create instance
     ec2:
-      key_name: MyMac
+      key_name: VPC Task Bastion Public Key
       instance_type: t2.micro
       image: ami-0affd4508a5d2481b
       group: SSH
