@@ -5,6 +5,7 @@
   become_method: sudo
   user: centos
   tasks: 
+  
   - name: Launch instance
     ec2:
       key_name: ansible
@@ -17,9 +18,9 @@
       wait: True
     register: ec2
 
-  - name: Install Apache package
-    package: 
-      name: httpd
-      state: installed
+    - name: Install Apache package
+      package: 
+        name: httpd
+        state: installed
 
   
