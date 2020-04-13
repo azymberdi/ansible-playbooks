@@ -25,7 +25,7 @@
 
   - name: Install MariaDB package
     package: 
-      name: mariadb
+      name: mariadb-server
       state: installed      
 
   - name: Create database user 
