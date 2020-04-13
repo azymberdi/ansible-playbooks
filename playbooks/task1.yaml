@@ -28,6 +28,11 @@
       name: mariadb-server
       state: installed      
 
+  - name: Install MySQL-python package
+    package: 
+      name: MySQL-python
+      state: installed    
+
   - name: Add User 
     mysql_user: 
       name: bob
