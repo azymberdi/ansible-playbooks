@@ -28,8 +28,7 @@
       name: mariadb-server
       state: installed      
 
-  - name: Create database user 
-    mysql_user:
+  - mysql_user: Create Users
       name: bob
       state: present
   
