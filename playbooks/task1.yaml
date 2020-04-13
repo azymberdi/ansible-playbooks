@@ -35,6 +35,21 @@
     user:
       name: bob
       generate_ssh_key: yes
+
+  - name: Create a user
+    user:
+      name: ben
+      generate_ssh_key: yes
+
+  - name: Create a user
+    user:
+      name: lisa
+      generate_ssh_key: yes
+
+  - name: Create a user
+    user:
+      name: katty
+      generate_ssh_key: yes
      
     
   
