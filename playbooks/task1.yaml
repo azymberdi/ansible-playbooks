@@ -19,9 +19,9 @@
     register: ec2
 
   - name: Install Apache package
-      package: 
-        name: httpd
-        state: installed
+    package: 
+      name: httpd
+      state: installed
 
   - name: Create database user 
     mysql_user:
