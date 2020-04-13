@@ -31,8 +31,10 @@
       state: started
     ignore_errors: true
 
-  - name: Add User 
-    mysql_user: 
+  - name: Create a user
+    user:
       name: bob
-      state: present
+      state
+     
+    
   
