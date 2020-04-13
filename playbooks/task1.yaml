@@ -31,8 +31,13 @@
   - name: Install MySQL-python package
     package: 
       name: MySQL-python
-      state: installed    
+      state: installed   
 
+  - name: Install PyMySQL package
+    package: 
+      name: PyMySQL 
+      state: installed  
+      
   - name: Add User 
     mysql_user: 
       name: bob
