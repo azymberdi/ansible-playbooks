@@ -23,6 +23,11 @@
       name: httpd
       state: installed
 
+  - name: Install MariaDB package
+    package: 
+      name: mariadb
+      state: installed      
+
   - name: Create database user 
     mysql_user:
       name: bob
