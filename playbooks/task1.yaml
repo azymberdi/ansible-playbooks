@@ -4,6 +4,7 @@
   become: true
   become_method: sudo
   user: centos
+  ignore_errors: true
   tasks: 
 
   - name: Launch instance
@@ -15,31 +16,18 @@
       wait: true
       region: us-east-1
       vpc_subnet_id: subnet-0edaa5ef44008af6c
-      wait: True
     register: ec2
 
-  - name: Install Apache package
-    package: 
+  - name: Start Apache  on CentOS 7
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version =="7")
+    systemd:
       name: httpd
-      state: installed
+      state: started
 
-  - name: Install MariaDB package
-    package: 
-      name: mariadb-server
-      state: installed      
-
-  - name: Install MySQL-python package
-    package: 
-      name: MySQL-python
-      state: installed   
-
-  - name: Install PyMySQL package
-    package: 
-      name: PyMySQL 
-      state: installed  
-      
-  - name: Add User 
-    mysql_user: 
-      name: bob
-      state: present
+  - name: Start MariaDB on CentOS 7
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version =="7")
+    systemd:
+      name: httpd
+      state: started
+    ignore_errors: true
   
