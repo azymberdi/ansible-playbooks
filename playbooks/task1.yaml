@@ -17,6 +17,9 @@
       wait: True
     register: ec2
 
-
+  - name: Install Apache package
+    package: 
+      name: httpd
+      state: installed
 
   
