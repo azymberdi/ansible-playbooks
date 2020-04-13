@@ -4,6 +4,7 @@
   hosts: all
   become: true
   become_method: sudo
+  ignore_errors: true
   user: centos
   ignore_errors: true
   tasks: 
