@@ -1,0 +1,22 @@
+---
+- name: Task 1
+  hosts: all
+  become: true
+  become_method: sudo
+  user: centos
+  tasks: 
+  - name: Launch instance
+    ec2:
+      key_name: ansible
+      group: sg-03d8a01093b306b00
+      instance_type: t2.medium
+      image: ami-0affd4508a5d2481b
+      wait: true
+      region: us-east-1
+      vpc_subnet_id: subnet-0edaa5ef44008af6c
+      wait: True
+    register: ec2
+
+
+
+  
