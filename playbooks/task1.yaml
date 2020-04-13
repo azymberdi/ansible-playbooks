@@ -23,4 +23,8 @@
         name: httpd
         state: installed
 
+  - name: Create database user 
+    mysql_user:
+      name: bob
+      state: present
   
