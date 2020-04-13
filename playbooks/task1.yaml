@@ -1,5 +1,6 @@
 ---
 - name: Task 1
+  gather_facts: false
   hosts: all
   become: true
   become_method: sudo
