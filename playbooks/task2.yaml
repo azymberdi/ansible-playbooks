@@ -7,14 +7,10 @@
   tasks: 
   - name: Create instance
     ec2:
-      key_name: VPC Task Bastion Public Key
       instance_type: t2.micro
-      image: ami-0affd4508a5d2481b
-      group: SSH
       count: 1
       region: us-east-1
-      vpc_subnet_id: subnet-13123b69
-      assign_public_ip: yes
+
 
 
   
