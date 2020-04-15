@@ -17,14 +17,14 @@
        - unzip
        - mariadb-server
        - php-mysql
-
-    - name: Make html folder
-      shell: "mkdir /var/www/html"
+       - php7.2
+      ignore_errors: yes 
 
     - name: Download wordpress Package
       get_url:
         url: https://wordpress.org/latest.tar.gz
         dest: /tmp/
+
     - name: Unzip wordpress
       unarchive: 
         src: /tmp/wordpress-5.4.tar.gz
@@ -42,3 +42,4 @@
         name: httpd 
         state: restarted 
         enabled: yes 
+      ignore_errors: yes 
