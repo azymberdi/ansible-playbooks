@@ -31,10 +31,10 @@
         remote_src: yes 
 
     - name: Move files to html folder
-      shell: "mv -f  /var/www/html/wordpress/*  /var/www/html"
+      shell: "mv /var/www/html/wordpress/*  /var/www/html"
 
     - name: Move index.html 
-      shell: "mv -f /var/www/html/index.html /tmp/"
+      shell: "mv /var/www/html/index.html /tmp/"
 
     - name: run apache 
       systemd: 
