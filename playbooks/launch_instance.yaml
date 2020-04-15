@@ -7,7 +7,7 @@
     ec2:
       instance type: t2.micro
       key name: ansible
-      image: ami-01f08ef3e76b957e5
+      image: ami-0affd4508a5d2481b
       region: us-east-1
       group: default
       count: 1
