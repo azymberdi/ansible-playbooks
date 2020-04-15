@@ -1,0 +1,16 @@
+---
+- name: ec2 instance
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: launching ec2
+    ec2:
+      instance type: t2.micro
+      key name: bastion2
+      image: ami-01f08ef3e76b957e5
+      region: us-west-2
+      group: default
+      count: 1
+      vpc-subnet-id: subnet-0f19bbcf7a068d3b5
+      wait: yes
+      assign_public_ip: yes
