@@ -1,12 +1,12 @@
 ---
 - name: ec2 instance
-  hosts: all
+  hosts: localhost
   connection: local
   tasks:
   - name: launching ec2
     ec2:
       instance type: t2.micro
-      key name: ansible
+      key name: MyMac
       image: ami-0affd4508a5d2481b
       region: us-east-1
       group: default
