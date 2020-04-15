@@ -5,12 +5,12 @@
   tasks:
   - name: launching ec2
     ec2:
-      instance type: t2.micro
+      instance_type: t2.micro
       key_name: MyMac
       image: ami-0affd4508a5d2481b
       region: us-east-1
       group: default
       count: 1
-      vpc-subnet-id: subnet-01f6777d0a58e76c3
+      vpc_subnet_id: subnet-01f6777d0a58e76c3
       wait: yes
       assign_public_ip: yes
