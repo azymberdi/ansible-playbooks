@@ -18,6 +18,9 @@
        - mariadb-server
        - php-mysql
 
+     - name: Make html folder
+      shell: "mkdir /var/www/html"
+
     - name: Download wordpress Package
       get_url:
         url: https://wordpress.org/latest.tar.gz
@@ -27,12 +30,13 @@
         src: /tmp/wordpress-5.4.tar.gz
         dest: /var/www/html/
         remote_src: yes 
+
     - name: Move files to html folder
       shell: "mv /var/www/html/wordpress/*  /var/www/html"
-      ignore_errors: yes
+
     - name: Move index.html 
       shell: "mv /var/www/html/index.html /tmp/"
-      ignore_errors: true
+
     - name: run apache 
       systemd: 
         name: httpd 
