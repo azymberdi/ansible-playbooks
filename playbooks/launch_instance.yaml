@@ -6,11 +6,11 @@
   - name: launching ec2
     ec2:
       instance type: t2.micro
-      key name: bastion2
+      key name: ansible
       image: ami-01f08ef3e76b957e5
-      region: us-west-2
+      region: us-east-1
       group: default
       count: 1
-      vpc-subnet-id: subnet-0f19bbcf7a068d3b5
+      vpc-subnet-id: subnet-01f6777d0a58e76c3
       wait: yes
       assign_public_ip: yes
