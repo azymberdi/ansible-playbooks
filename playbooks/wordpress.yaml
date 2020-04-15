@@ -17,7 +17,7 @@
        - unzip
        - mariadb-server
        - php-mysql
-       - php7.2
+       - php72
       ignore_errors: yes 
 
     - name: Download wordpress Package
@@ -32,10 +32,10 @@
         remote_src: yes 
 
     - name: Move files to html folder
-      shell: "mv /var/www/html/wordpress/*  /var/www/html"
+      shell: "mv -f  /var/www/html/wordpress/*  /var/www/html"
 
     - name: Move index.html 
-      shell: "mv /var/www/html/index.html /tmp/"
+      shell: "mv -f /var/www/html/index.html /tmp/"
 
     - name: run apache 
       systemd: 
