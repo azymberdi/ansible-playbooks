@@ -1,7 +1,7 @@
 ---
 - name: Install wordpress on CentOS 7
   gather_facts: no 
-  hosts: 35.179.15.73
+  hosts: 3.10.170.250
   become: true
   become_method: sudo
   user: centos
@@ -17,7 +17,6 @@
        - unzip
        - mariadb-server
        - php-mysql
-      ignore_errors: true
 
     - name: Download wordpress Package
       get_url:
@@ -39,4 +38,3 @@
         name: httpd 
         state: restarted 
         enabled: yes 
-      ignore_errors: yes 
