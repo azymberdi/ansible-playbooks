@@ -18,7 +18,7 @@
        - mariadb-server
        - php-mysql
 
-     - name: Make html folder
+    - name: Make html folder
       shell: "mkdir /var/www/html"
 
     - name: Download wordpress Package
